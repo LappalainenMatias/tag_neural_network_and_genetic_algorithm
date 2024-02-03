@@ -33,8 +33,9 @@ class _MyAppState extends State<MyApp> {
     return const MaterialApp(
       title: 'Red and blue game',
       home: Scaffold(
-        body: PlayAgainstMachine(playAsRed: false,),
-      ),
+          body: SingleChildScrollView(
+              child: Simulation()) //PlayAgainstMachine(playAsRed: false,),
+          ),
     );
   }
 }
@@ -86,7 +87,7 @@ class _SimulationState extends State<Simulation> {
     return Consumer<NeuralNetworkManager>(builder: (context, nnManager, child) {
       return Column(
         children: [
-          Text(
+          Text(style: TextStyle(fontSize: 20),
               "generation size: ${nnManager.generationSize}, generation: ${nnManager.generationIndex}, red win percentage: ${nnManager.redWinPercentage} %"),
           GridView.count(
               physics: const NeverScrollableScrollPhysics(),
@@ -107,7 +108,7 @@ class _SimulationState extends State<Simulation> {
         Container(
           padding: const EdgeInsets.all(4),
           child: GameWidget(
-            game: RedAndBlueGame(players[0], players[1], nnManager, 15),
+            game: RedAndBlueGame(players[0], players[1], nnManager, 8),
           ),
         ),
       );

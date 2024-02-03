@@ -24,13 +24,13 @@ class NeuralNetworkManager with ChangeNotifier {
     }
     redWinPercentage = (redWins / generationSize * 100).round();
     generationIndex += 1;
-    print("generation $generationIndex");
+    print("generation $generationIndex: $redWinPercentage");
     Random random = Random();
     reds.sort((a, b) => b.compareTo(a));
     blues.sort((a, b) => b.compareTo(a));
-    print(reds.first.ann.allWeights);
-    print(blues.first.ann.allWeights);
-    print("${blues.first.survivedTime} ${blues.first.won}");
+    //print(reds.first.ann.allWeights);
+    //print(blues.first.ann.allWeights);
+    //print("${blues.first.survivedTime} ${blues.first.won}");
     reds = reds.sublist(0, (generationSize / 2).round());
     blues = blues.sublist(0, (generationSize / 2).round());
     List<NeuralNetwork> redChildrenAndMutations = [];
